@@ -1,14 +1,24 @@
-
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.min.css';
+import SwiperCore, { Pagination } from 'swiper';
 
-const PetCard = ({ name, image, description }) => {
+SwiperCore.use([Pagination]);
+
+const PaginationComponent = ({ products }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6">
-      <img src={image} alt={name} className="w-full h-40 object-cover rounded-md" />
-      <h3 className="mt-4 text-lg font-semibold">{name}</h3>
-      <p className="text-gray-600">{description}</p>
-    </div>
+    <Swiper pagination={{ clickable: true }} slidesPerView={1} spaceBetween={10}>
+      {products.map(product => (
+        <SwiperSlide key={product.id}>
+          <div className="product-card">
+            <img src={product.image} alt={product.name} />
+            <h3 className="text-lg font-semibold">{product.name}</h3>
+            <p>{product.price} VND</p>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 
-export default PetCard;
+export default PaginationComponent;

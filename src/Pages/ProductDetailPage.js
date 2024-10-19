@@ -1,29 +1,30 @@
-// src/components/PetList.js (with error handling)
-import React, { useEffect, useState } from 'react';
-import PetCard from '../components/Pagination';
+import React, { useState, useEffect } from 'react';
+import { fetchPetById } from '../Services/petsAPI';
 
-const PetList = () => {
-  const [pets, setPets] = useState([]);
-  const [error, setError] = useState(null);
+const ProductPage = ({ match }) => {
+  const [pet, setPet] = useState(null);
 
   useEffect(() => {
-    fetch("https://monitor-backend-rust.vercel.app/api/pets")
-      .then(response => response.json())
-      .then(data => setPets(data))
-      .catch(err => setError("Failed to load pets. Please try again later."));
-  }, []);
-
-  if (error) {
-    return <div className="text-red-500 text-center">{error}</div>;
-  }
+    const getPet = async () => {
+      const data = await fetchPetById(match.params.id);
+      setPet(data);
+    };
+    getPet();
+  }, [match.params.id]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-      {pets.map(pet => (
-        <PetCard key={pet.id} name={pet.name} image={pet.image} description={pet.description} />
-      ))}
+    <div className="container mx-auto p-5">
+      {pet ? (
+        <>
+          <h1 className="text-3xl font-bold">{pet.name}</h1>
+          <img src={pet.image} alt={pet.name} />
+          <p>{pet.price} VND</p>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
 
-export default PetList;
+export default ProductPage;

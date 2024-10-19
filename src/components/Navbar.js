@@ -1,19 +1,25 @@
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Navbar = () => {
   return (
-    <header className="flex flex-col md:flex-row justify-between items-center p-4 bg-green-500">
-      <div className="text-white text-2xl">Monito Pet Store</div>
-      <nav className="mt-4 md:mt-0">
-        <ul className="flex space-x-4">
-          <li><a href="#" className="text-white">Home</a></li>
-          <li><a href="#" className="text-white">Pets</a></li>
-          <li><a href="#" className="text-white">Contact</a></li>
-        </ul>
-      </nav>
+    <header className="bg-white shadow-lg">
+      <div className="container mx-auto flex justify-between items-center p-4">
+        <div className="logo text-2xl font-bold">
+          <Link to="/">Monito</Link>
+        </div>
+        <nav>
+          <ul className="flex space-x-4">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/category">Category</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
+        </nav>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">Join the community</button>
+      </div>
     </header>
   );
 };
 
-export default Header;
+export default Navbar;
