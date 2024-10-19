@@ -1,38 +1,72 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  background-color: #ffe8b5;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-image img {
+  max-width: 400px;
+}
+
+.pet-listing, .products, .adoption, .blog {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.pet-cards, .product-cards, .blog-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.pet-card, .product-card, .blog-card {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(33% - 20px);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+footer {
+  background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.newsletter input {
+  padding: 10px;
+  margin-right: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+button {
+  background-color: #ff8c00;
+  border: none;
+  padding: 10px 20px;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  cursor: pointer;
+  font-size: 16px;
 }
